@@ -138,6 +138,9 @@
             </asp:DropDownList>
         </p>
         <p style="margin-left: 40px">
+            <asp:Label ID="Label12" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+        </p>
+        <p style="margin-left: 40px">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Записаться" />
         </p>
         <p style="margin-left: 40px">

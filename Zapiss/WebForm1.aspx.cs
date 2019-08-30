@@ -56,9 +56,31 @@ namespace Zapiss
             {
                 Label11.Text = "Заполните все поля";
                 Label11.Visible = true;
+                return;
             }
             else
             {
+                dt = new DataTable();
+                ds = new DataSet();
+                query = "select [DateDay],[DateMonth],[DateTime] from Zapis_na_osmotr";
+                adapterSql = new SqlDataAdapter(query, connect);
+                adapterSql.Fill(ds);
+                dt = ds.Tables[0];
+                int i = 0;
+                string st1,st2,st3;
+                while (i < dt.Rows.Count)
+                {
+                    st1 = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[0]).Replace(" ", "");
+                    st2 = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[1]).Replace(" ", "");
+                    st3 = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[2]).Replace(" ", "");
+                    if (DropDownList1.Text == st1 && DropDownList2.Text==st2 && DropDownList3.Text==st3)
+                    {
+                        Label12.Text = "Данное время занято";
+                        Label12.Visible = true;
+                        return;
+                    }
+                    i++;
+                }
                 dt = new DataTable();
                 ds = new DataSet();
                 query = "insert into Zapis_na_osmotr values('" + TextBox1.Text + "','" + TextBox2.Text + "','" + TextBox3.Text + "','" + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + "','" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + DropDownList3.Text + "');";
@@ -66,6 +88,10 @@ namespace Zapiss
                 adapterSql.Fill(ds);
                 dt.Dispose();
                 ds.Dispose();
+                Label11.Visible = false;
+                Label12.Visible = true;
+                Label12.Text = "Вы записаны";
+                Label12.ForeColor = System.Drawing.Color.Green;
             }
         }
 
