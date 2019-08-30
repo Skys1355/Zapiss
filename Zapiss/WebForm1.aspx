@@ -204,8 +204,14 @@
             </asp:DropDownList>
         </p>
         <p style="margin-left: 200px">
-            <asp:Button ID="Button3" runat="server" Text="Отчёт" Visible="False" />
+            <asp:Button ID="Button3" runat="server" Text="Отчёт" Visible="False" OnClick="Button3_Click" />
         </p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="margin-left: 280px">
+            <asp:GridView ID="GridView1" runat="server" ShowHeaderWhenEmpty="True">
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+        </div>
     </form>
 </body>
 </html>
